@@ -1,0 +1,11 @@
+Makefile
+*.f
+*.sh
+*.vcd
+*.shm
+*.d
+xrun*
+setup.bash
+*.swp
+sim/.simvision/*
+
