@@ -16,19 +16,21 @@ class driver extends uvm_driver#(packet);
       virtual task run_phase(uvm_phase phase);
         forever begin
           seq_item_port.get_next_item(req);
-          send(req);
+//           send(req);
+          //Call the Interface Task instead
+          vif.send(req);
           seq_item_port.item_done();
         end
       endtask : run_phase
   		
-     task send(packet tr);
-        //`uvm_info(get_type_name(), "Sending Packet from Driver", UVM_MEDIUM);
-        //tr.print();
-       @(negedge vif.clk);
-        vif.parallel_in <= tr.parallel_in;
-        vif.parallel_load <= tr.parallel_load;
-        vif.inc <= tr.inc;
-        vif.rst <= 0;
-      endtask : send
+//      task send(packet tr);
+//         //`uvm_info(get_type_name(), "Sending Packet from Driver", UVM_MEDIUM);
+//         //tr.print();
+//        @(negedge vif.clk);
+//         vif.parallel_in <= tr.parallel_in;
+//         vif.parallel_load <= tr.parallel_load;
+//         vif.inc <= tr.inc;
+//         vif.rst <= 0;
+//       endtask : send
       
 endclass : driver
