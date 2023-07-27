@@ -24,8 +24,9 @@ class test_base extends uvm_test;
     repeat(5) begin
       seq.start(env.agt.sqr);
     end
-    #10;
+//     #10;
     phase.drop_objection(this);
+    phase.get_objection().set_drain_time(this,1us);
   endtask : run_phase
   
 endclass : test_base
